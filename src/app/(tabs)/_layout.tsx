@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 
-import { Octicons } from '@expo/vector-icons';
+import { Octicons, Feather, AntDesign } from '@expo/vector-icons';
 
 export default function TabsLayout() {
     return (
@@ -21,6 +21,26 @@ export default function TabsLayout() {
                     {
                         title: "Videos",
                         tabBarIcon: () => <Octicons name="video" size={24} color="black" />
+                    }
+                }
+            />
+
+            <Tabs.Screen
+                name="history"
+                options={
+                    {
+                        title: "History",
+                        tabBarIcon: () => <Feather name="shield" size={24} color="black" />
+                    }
+                }
+            />
+
+            <Tabs.Screen
+                name="services"
+                options={
+                    {
+                        title: "Services",
+                        tabBarIcon: () => <AntDesign name="infocirlceo" size={24} color="black" />
                     }
                 }
             />

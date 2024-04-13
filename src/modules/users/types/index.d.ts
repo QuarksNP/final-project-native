@@ -30,3 +30,15 @@ export type CivilDefenseVideoType = {
     descripcion: string;
     link:        string;
 }
+
+export interface CivilDefenseServices {
+    datos: CivilDefenseServiceType[]
+}
+
+export type CivilDefenseServiceType = {
+    id:          string;
+    nombre:      string;
+    descripcion: string;
+    foto:        string;
+}
+
