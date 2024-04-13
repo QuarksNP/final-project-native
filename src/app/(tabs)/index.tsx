@@ -2,14 +2,16 @@ import { StyleSheet, View } from "react-native";
 
 import { CIVIL_DEFENSE_ACTIONS } from "@users/lib/civil-defense-actions";
 import AutoSlider from "@users/components/auto-slider";
+import { GradientContainer } from "@core/components/gradient-container";
 
 export default function Screen() {
     return (
         <View style={styles.container}>
+
             <AutoSlider
                 items={CIVIL_DEFENSE_ACTIONS}
                 timer={3000}
-                style={styles.slider}
+                customStyles={styles.slider}
             />
         </View>
     )

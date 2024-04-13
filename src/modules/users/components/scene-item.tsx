@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { ITEM_WIDTH } from "@users/lib/item-width";
 import { CivilDefenseVideoType } from "@users/types";
 
 import YoutubeIframe from "react-native-youtube-iframe";
+import { Typography } from "@core/components/typography";
 
 interface SceneProps {
     index: number,
@@ -18,9 +19,17 @@ export const Scene = ({ item, index }: SceneProps) => {
                 width={"100%" as unknown as number}
             />
             <View style={styles.details_container}>
-                <Text style={styles.title}>{item.titulo}</Text>
-                <Text style={styles.description}>{item.descripcion}</Text>
-                <Text style={styles.date}>{item.fecha.toString()}</Text>
+                <Typography
+                    subTitle 
+                    text={item.titulo} 
+                />
+                <Typography
+                    content
+                    text={item.descripcion} />
+                <Typography
+                    date
+                    text={item.fecha as string}
+                />
             </View>
         </View>
     )
@@ -46,20 +55,4 @@ const styles = StyleSheet.create({
         gap: 20,
         padding: 20
     },
-
-    title: {
-        fontSize: 20,
-        fontWeight: "bold",
-    },
-
-    description: {
-        fontSize: 16,
-        fontWeight: "400",
-    },
-
-    date: {
-        fontSize: 16,
-        fontWeight: "400",
-        opacity: .5
-    }
 })

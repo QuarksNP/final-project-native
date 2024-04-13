@@ -1,28 +1,38 @@
-import { Animated, Image, StyleSheet, Text, View, type ViewProps } from "react-native"
+import { Animated, Image, StyleSheet, type ViewStyle, type ViewProps } from "react-native"
 
 import { useAutoSlide } from "@users/hooks/use-auto-slide";
 
 import type { CivilDefenseType } from "@users/types";
+import { Typography } from "@core/components/typography";
+import { GradientContainer } from "@core/components/gradient-container";
 
 interface AutoSliderProps extends ViewProps {
-    items: CivilDefenseType;
-    timer: number;
+    items: CivilDefenseType
+    timer: number
+    customStyles?: ViewStyle
+
 }
 
-export default function AutoSlider({ items, timer, ...props }: AutoSliderProps) {
+export default function AutoSlider({ items, timer, customStyles }: AutoSliderProps) {
 
     const { current, fadeAnim } = useAutoSlide(timer)
 
     return (
         <Animated.View
-            {...props} 
-            style={{ opacity: fadeAnim, ...props.style as any }}
+            style={[{ opacity: fadeAnim }, customStyles]}
         >
-            <Text style={styles.title}>{items[current].title}</Text>
+            <GradientContainer 
+                colors={["transparent", "black"]}
+                customStyles={styles.gradient}
+            >
+                <Typography
+                    text={items[current].title}
+                    customStyles={styles.title}
+                />
+            </GradientContainer>
 
-            <View style={styles.layer}></View>
-            <Image 
-                source={items[current].image} 
+            <Image
+                source={items[current].image}
                 style={styles.image}
             />
         </Animated.View>
@@ -36,21 +46,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        position: "relative",
         color: "white",
         textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 24,
-        zIndex: 20,
-    },
-
-    layer: {
-        position: "absolute",
-        backgroundColor: "black",
-        width: "100%",
-        height: "100%",
-        opacity: .7,
-        zIndex: 10
     },
 
     image: {
@@ -58,5 +55,13 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         objectFit: "cover"
-    }
+    },
+
+    gradient: {
+        position: "relative",
+        marginTop: "auto",
+        paddingBottom: 40,
+        zIndex: 20,
+        height: 1000
+    },
 })

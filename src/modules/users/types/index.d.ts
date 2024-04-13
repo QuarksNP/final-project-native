@@ -25,7 +25,7 @@ export interface CivilDefenseVideos {
 
 export type CivilDefenseVideoType = {
     id:          string;
-    fecha:       Date;
+    fecha:       Date | string;
     titulo:      string;
     descripcion: string;
     link:        string;
