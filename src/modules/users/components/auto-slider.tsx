@@ -1,4 +1,4 @@
-import { Animated, Image, StyleSheet, type ViewStyle, type ViewProps } from "react-native"
+import { Animated, Image, StyleSheet, type ViewStyle, type ViewProps, ImageBackground } from "react-native"
 
 import { useAutoSlide } from "@users/hooks/use-auto-slide";
 
@@ -21,20 +21,20 @@ export default function AutoSlider({ items, timer, customStyles }: AutoSliderPro
         <Animated.View
             style={[{ opacity: fadeAnim }, customStyles]}
         >
-            <GradientContainer 
-                colors={["transparent", "black"]}
-                customStyles={styles.gradient}
-            >
-                <Typography
-                    text={items[current].title}
-                    customStyles={styles.title}
-                />
-            </GradientContainer>
-
-            <Image
+            <ImageBackground
                 source={items[current].image}
                 style={styles.image}
-            />
+            >
+                <GradientContainer
+                    colors={["transparent", "black"]}
+                    customStyles={styles.gradient}
+                >
+                    <Typography
+                        text={items[current].title}
+                        customStyles={styles.title}
+                    />
+                </GradientContainer>
+            </ImageBackground>
         </Animated.View>
     )
 }
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        position: "absolute",
         width: "100%",
         height: "100%",
         objectFit: "cover"

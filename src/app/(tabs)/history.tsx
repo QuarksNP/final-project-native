@@ -1,5 +1,5 @@
+import { ListItem } from "@core/components/list-item";
 import { Typography } from "@core/components/typography";
-import { AchievementsItem } from "@users/components/achievement-item";
 import { ACHIEVEMENTS } from "@users/lib/achievements";
 import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -13,11 +13,11 @@ export default function History() {
                 data={ACHIEVEMENTS}
                 contentContainerStyle={styles.list}
                 keyExtractor={(item) => item.titulo}
-                renderItem={({ item }) => 
+                renderItem={({ item: { titulo, descripción } }) => 
 
-                <AchievementsItem 
-                    title={item.titulo}
-                    description={item.descripción}
+                <ListItem 
+                    title={titulo}
+                    content={descripción}
                 />}
             />
         </SafeAreaView>
