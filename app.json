@@ -8,7 +8,7 @@
     "icon": "./public/app_icon.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./public/my-pic.png",
+      "image": "./public/app_icon.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,10 +22,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./public/app_icon.jpg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.alberto_gzb.civil_defense"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ebf377be-2e40-4018-bf65-1a3213d6a2a5"
+      }
     }
   }
 }
