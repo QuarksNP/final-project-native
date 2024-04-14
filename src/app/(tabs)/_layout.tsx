@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 
-import { Octicons, Feather, AntDesign } from '@expo/vector-icons';
+import { Octicons, Feather, AntDesign, Entypo } from '@expo/vector-icons';
 
 export default function TabsLayout() {
     return (
@@ -44,6 +44,39 @@ export default function TabsLayout() {
                     }
                 }
             />
+
+            <Tabs.Screen
+                name="news"
+                options={
+                    {
+                        title: "News",
+                        tabBarIcon: () => <Entypo name="news" size={24} color="black" />
+                    }
+                }
+            />
+
+            <Tabs.Screen
+                name="measures"
+                options={
+                    {
+                        title: "Measures",
+                        tabBarIcon: () => <AntDesign name="exclamationcircleo" size={24} color="black" />
+                    }
+                }
+            />
+
+            <Tabs.Screen
+                name="locations/index"
+                options={
+                    {
+                        title: "Locations",
+                        tabBarIcon: () => <Entypo name="map" size={24} color="black" />
+                    }
+                }
+            />
+
+            <Tabs.Screen name="locations/[id]/index" options={{ href: null, title: "Details of locations" }} />
+
         </Tabs>
     )
 }

@@ -1,19 +1,16 @@
-import { Typography } from "@core/components/typography";
-import { FlatList, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import type { CivilDefenseServiceType } from "@users/types";
-import { useData } from "@users/hooks/use-data";
-import { Spinner } from "@core/components/spinner";
 import { ListItem } from "@core/components/list-item";
+import { Spinner } from "@core/components/spinner";
+import { Typography } from "@core/components/typography";
+import { useData } from "@users/hooks/use-data";
+import type { MembersType } from "@users/types";
+import { SafeAreaView, FlatList, StyleSheet } from "react-native";
 
-
-export default function Services() {
-    const { data: services, isLoading } = useData<CivilDefenseServiceType[]>("/servicios.php")
-
+export default function Members() {
+    const { data: members, isLoading } = useData<MembersType[]>("/miembros.php")
+    
     if(isLoading) return <Spinner />
 
-    if (!services) return null
+    if (!members) return null
 
     return (
         <SafeAreaView style={styles.container}>
@@ -23,13 +20,13 @@ export default function Services() {
             />
 
             <FlatList
-                data={services}
+                data={members}
                 contentContainerStyle={styles.list}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item: { nombre, descripcion, foto } }) => 
+                renderItem={({ item: { nombre, cargo, foto } }) => 
                     <ListItem  
                         title={nombre}
-                        content={descripcion}
+                        content={cargo}
                         image={foto}
                         containerStyles={styles.item_container}
                         imageStyles={styles.image}
@@ -40,6 +37,7 @@ export default function Services() {
         </SafeAreaView>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {

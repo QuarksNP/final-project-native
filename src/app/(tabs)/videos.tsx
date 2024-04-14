@@ -5,7 +5,10 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Screen() {
     return (
         <View style={styles.container}>
-            <Typography text="Galería de videos educativos y formativos" />
+            <Typography 
+                text="🎥 Galería de videos educativos y formativos" 
+                customStyles={{ textAlign: "center" }}
+            />
 
             <CarouselOfVideos />
         </View>

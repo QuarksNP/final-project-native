@@ -53,3 +53,28 @@ export type CivilDefenseNewsType = {
   contenido: string;
   foto: string;
 };
+
+export type MeasureType = {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  foto: string;
+};
+
+export type LocationType = {
+  ciudad: string;
+  codigo: string;
+  edificio: string;
+  coordinador: string;
+  telefono: string;
+  capacidad: string;
+  lat: string;
+  lng: string;
+};
+
+export type MembersType = {
+  id: string
+  foto: string
+  nombre: string
+  cargo: string
+}

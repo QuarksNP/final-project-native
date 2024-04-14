@@ -17,6 +17,7 @@ export default function News() {
         <SafeAreaView style={styles.container}>
             <Typography
                 text="📰 Últimas noticias"
+                customStyles={{ textAlign: "center" }}
             />
 
             <FlatList
