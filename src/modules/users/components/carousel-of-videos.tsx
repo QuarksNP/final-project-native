@@ -6,23 +6,18 @@ import { SLIDER_WIDTH } from "@users/lib/slider-width"
 import { ITEM_WIDTH } from "@users/lib/item-width"
 import { Scene } from "./scene-item"
 
-import { civilDefense } from "@users/api/civil-defense"
-import { CivilDefenseVideos } from "@users/types"
+import { CivilDefenseVideoType } from "@users/types"
+import { useData } from "@users/hooks/use-data"
+import { Spinner } from "@core/components/spinner"
 
 export const CarouselOfVideos = () => {
     const isCarousel = useRef(null)
 
-    const [civilDefenseVideos, setCivilDefenseVideos] = useState<CivilDefenseVideos | any>([])
+    const { data: civilDefenseVideos, isLoading } = useData<CivilDefenseVideoType[]>("/videos.php")
 
-    useEffect(() => {
-        async function getData() {
-            const galleryOfVideos: CivilDefenseVideos = await civilDefense("/videos.php")
+    if (isLoading) return <Spinner />
 
-            setCivilDefenseVideos(galleryOfVideos.datos)
-        }
-
-        getData()
-    }, [])
+    if (!civilDefenseVideos) return null
 
     return (
         <Carousel

@@ -1,24 +1,19 @@
 import { Typography } from "@core/components/typography";
-import { civilDefense } from "@users/api/civil-defense";
-import { useEffect, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import type { CivilDefenseServices, CivilDefenseServiceType } from "@users/types";
+import type { CivilDefenseServiceType } from "@users/types";
 import { ServiceItem } from "@users/components/service-item";
+import { useData } from "@users/hooks/use-data";
+import { Spinner } from "@core/components/spinner";
 
 
 export default function Services() {
-    const [services, setServices] = useState<CivilDefenseServiceType[]>([])
+    const { data: services, isLoading } = useData<CivilDefenseServiceType[]>("/videos.php")
 
-    useEffect(() => {
-        async function getData() {
-            const listOfServices: CivilDefenseServices = await civilDefense("/servicios.php")
-            setServices(listOfServices.datos)
-        }
+    if(isLoading) return <Spinner />
 
-        getData()
-    }, [])
+    if (!services) return null
 
     return (
         <SafeAreaView style={styles.container}>
